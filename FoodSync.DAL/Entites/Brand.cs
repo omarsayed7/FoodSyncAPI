@@ -4,10 +4,9 @@ using System.Text;
 
 namespace FoodSync.DAL.Entites
 {
-    public class Branch
+    public class Brand
     {
-        public int BranchId { get; set; }
-        public string BranchName { get; set; }
-
+        public int BrandId { get; set; }
+        public string BrandName{ get; set; }
     }
 }

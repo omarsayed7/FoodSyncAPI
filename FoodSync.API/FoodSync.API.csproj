@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FoodSync.BLL\FoodSync.BLL.csproj" />
     <ProjectReference Include="..\FoodSync.DAL\FoodSync.DAL.csproj" />
     <ProjectReference Include="..\FoodSync.Utlities\FoodSync.Utlities.csproj" />
   </ItemGroup>

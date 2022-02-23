@@ -31,6 +31,8 @@ namespace FoodSync.DAL
 
         }
         public virtual DbSet<Branch> Branches { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
+
 
     }
 }
