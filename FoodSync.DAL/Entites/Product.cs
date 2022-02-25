@@ -4,14 +4,13 @@ using System.Text;
 
 namespace FoodSync.DAL.Entites
 {
-    public class Branch
+    public class Product
     {
         public long Id { get; set; }
         public string Name { get; set; }
         public virtual Brand Brand { get; set; }
-        public virtual ICollection<OpenningClosingQty> OpenningClosingQties { get; set; }
+        public virtual ICollection<RawMaterial> RawMaterials { get; set; }
         public virtual ICollection<Sale> Sales { get; set; }
-        public virtual ICollection<DailyOperation> DailyOperations { get; set; }
-        public virtual User User { get; set; }
+
     }
 }

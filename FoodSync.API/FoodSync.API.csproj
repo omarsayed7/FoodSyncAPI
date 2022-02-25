@@ -5,9 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -16,7 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FoodSync.BLL\FoodSync.BLL.csproj" />
     <ProjectReference Include="..\FoodSync.DAL\FoodSync.DAL.csproj" />
-    <ProjectReference Include="..\FoodSync.Utlities\FoodSync.Utlities.csproj" />
+    <ProjectReference Include="..\FoodSync.Utilities\FoodSync.Utilities.csproj" />
   </ItemGroup>
 
 

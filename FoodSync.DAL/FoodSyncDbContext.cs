@@ -32,7 +32,18 @@ namespace FoodSync.DAL
         }
         public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<DailyOperation> DailyOperations { get; set; }
+        public virtual DbSet<OpenningClosingQty> OpenningClosingQties { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<RawMaterial> RawMaterials { get; set; }
+        public virtual DbSet<Sale> Sales { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<RawMaterial>()
+                .HasMany<Product>(s => s.Products)
+                .WithMany(c => c.RawMaterials);
+        }
     }
 }
