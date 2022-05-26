@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FoodSync.DAL.Migrations
 {
-    public partial class Database_V_10 : Migration
+    public partial class V20 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,6 +43,7 @@ namespace FoodSync.DAL.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BranchCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BrandId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -98,6 +99,27 @@ namespace FoodSync.DAL.Migrations
                         principalTable: "RawMaterials",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Consumption",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ConsumptionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FinalRecord = table.Column<double>(type: "float", nullable: false),
+                    BranchId = table.Column<long>(type: "bigint", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Consumption", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Consumption_Branches_BranchId",
+                        column: x => x.BranchId,
+                        principalTable: "Branches",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -169,7 +191,7 @@ namespace FoodSync.DAL.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     role = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BranchId = table.Column<long>(type: "bigint", nullable: true)
+                    BranchId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -179,7 +201,7 @@ namespace FoodSync.DAL.Migrations
                         column: x => x.BranchId,
                         principalTable: "Branches",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -244,6 +266,11 @@ namespace FoodSync.DAL.Migrations
                 column: "RawMaterialsid");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Consumption_BranchId",
+                table: "Consumption",
+                column: "BranchId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DailyOperations_BranchId",
                 table: "DailyOperations",
                 column: "BranchId");
@@ -286,13 +313,17 @@ namespace FoodSync.DAL.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Users_BranchId",
                 table: "Users",
-                column: "BranchId");
+                column: "BranchId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "BrandRawMaterial");
+
+            migrationBuilder.DropTable(
+                name: "Consumption");
 
             migrationBuilder.DropTable(
                 name: "DailyOperations");

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodSync.DAL.Migrations
 {
     [DbContext(typeof(FoodSyncDbContext))]
-    [Migration("20220224005628_Database_V_1.0")]
-    partial class Database_V_10
+    [Migration("20220526140503_V2.0")]
+    partial class V20
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,6 +42,9 @@ namespace FoodSync.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
+
+                    b.Property<string>("BranchCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("BrandId")
                         .HasColumnType("int");
@@ -75,6 +78,29 @@ namespace FoodSync.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Brands");
+                });
+
+            modelBuilder.Entity("FoodSync.DAL.Entites.Consumption", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<long?>("BranchId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("ConsumptionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("FinalRecord")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BranchId");
+
+                    b.ToTable("Consumption");
                 });
 
             modelBuilder.Entity("FoodSync.DAL.Entites.DailyOperation", b =>
@@ -215,7 +241,7 @@ namespace FoodSync.DAL.Migrations
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.Property<long?>("BranchId")
+                    b.Property<long>("BranchId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Email")
@@ -229,7 +255,8 @@ namespace FoodSync.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BranchId");
+                    b.HasIndex("BranchId")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
@@ -266,11 +293,18 @@ namespace FoodSync.DAL.Migrations
 
             modelBuilder.Entity("FoodSync.DAL.Entites.Branch", b =>
                 {
-                    b.HasOne("FoodSync.DAL.Entites.Brand", "Brand")
+                    b.HasOne("FoodSync.DAL.Entites.Brand", null)
                         .WithMany("Branches")
                         .HasForeignKey("BrandId");
+                });
 
-                    b.Navigation("Brand");
+            modelBuilder.Entity("FoodSync.DAL.Entites.Consumption", b =>
+                {
+                    b.HasOne("FoodSync.DAL.Entites.Branch", "Branch")
+                        .WithMany("Consumptions")
+                        .HasForeignKey("BranchId");
+
+                    b.Navigation("Branch");
                 });
 
             modelBuilder.Entity("FoodSync.DAL.Entites.DailyOperation", b =>
@@ -330,8 +364,10 @@ namespace FoodSync.DAL.Migrations
             modelBuilder.Entity("FoodSync.DAL.Entites.User", b =>
                 {
                     b.HasOne("FoodSync.DAL.Entites.Branch", "Branch")
-                        .WithMany()
-                        .HasForeignKey("BranchId");
+                        .WithOne("User")
+                        .HasForeignKey("FoodSync.DAL.Entites.User", "BranchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Branch");
                 });
@@ -353,11 +389,15 @@ namespace FoodSync.DAL.Migrations
 
             modelBuilder.Entity("FoodSync.DAL.Entites.Branch", b =>
                 {
+                    b.Navigation("Consumptions");
+
                     b.Navigation("DailyOperations");
 
                     b.Navigation("OpenningClosingQties");
 
                     b.Navigation("Sales");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FoodSync.DAL.Entites.Brand", b =>

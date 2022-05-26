@@ -291,11 +291,9 @@ namespace FoodSync.DAL.Migrations
 
             modelBuilder.Entity("FoodSync.DAL.Entites.Branch", b =>
                 {
-                    b.HasOne("FoodSync.DAL.Entites.Brand", "Brand")
+                    b.HasOne("FoodSync.DAL.Entites.Brand", null)
                         .WithMany("Branches")
                         .HasForeignKey("BrandId");
-
-                    b.Navigation("Brand");
                 });
 
             modelBuilder.Entity("FoodSync.DAL.Entites.Consumption", b =>
