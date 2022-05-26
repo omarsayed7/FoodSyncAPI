@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FoodSync.DAL.Entites.Branch">
+    <Position X="5" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQDAAgAAAABAAAAAAAABAQAAAAAAAAAAIAAIAIAACA=</HashCode>
+      <FileName>Entites\Branch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FoodSync.DAL.Entites.Brand">
+    <Position X="7.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAgAAAAQAQAAAAQAAAAAAAAABAAAAAAAAAw=</HashCode>
+      <FileName>Entites\Brand.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Branches" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="FoodSync.DAL.Entites.Consumption">
+    <Position X="8.5" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACgQAAAAAAAAAAAAAAAAEAAAAAAAgAAAAQAAAAAAA=</HashCode>
+      <FileName>Entites\Consumption.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Branch" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="FoodSync.DAL.Entites.DailyOperation">
+    <Position X="4.75" Y="14.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAADAQAAAAABAAIAAAAAAAAAAAIAACgBAAAAAQAAIAg=</HashCode>
+      <FileName>Entites\DailyOperation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Branch" />
+      <Property Name="RawMaterial" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="FoodSync.DAL.Entites.OpenningClosingQty">
+    <Position X="4.5" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAAAAAAAAAAYEAAAAAAAAAIAgEAAAAAAAAAAg=</HashCode>
+      <FileName>Entites\OpenningClosingQty.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Months" />
+      <Property Name="Branch" />
+      <Property Name="RawMaterial" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="FoodSync.DAL.Entites.Product">
+    <Position X="1" Y="18.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAAAIAAAAAAAAABAQAAAAAAAQAAAAAAAABAAw=</HashCode>
+      <FileName>Entites\Product.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Brand" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="FoodSync.DAL.Entites.RawMaterial">
+    <Position X="1.5" Y="15" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAACAAIAAAAAQAAAAAAAAAAAAAIAABAiQ=</HashCode>
+      <FileName>Entites\RawMaterial.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Products" />
+      <Property Name="Brands" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="FoodSync.DAL.Entites.Sale">
+    <Position X="8.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAAAAAAAAAAAAAAACAACAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Entites\Sale.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Branch" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="FoodSync.DAL.Entites.User">
+    <Position X="1.75" Y="10.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAAACAACAAAAAABABIAAAAAAAgCAAAQAAAAAAA=</HashCode>
+      <FileName>Entites\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Branch" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="FoodSync.DAL.Entites.Months">
+    <Position X="2.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAAAAAAABAIBACgAAAAAAAAACAAAAAAAAAAAAAgAAE=</HashCode>
+      <FileName>Entites\OpenningClosingQty.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

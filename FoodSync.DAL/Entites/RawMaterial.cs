@@ -14,6 +14,16 @@ namespace FoodSync.DAL.Entites
         public virtual ICollection<OpenningClosingQty> OpenningClosingQties { get; set; }
         public virtual ICollection<DailyOperation> DailyOperations { get; set; }
 
+        public void AddRawMaterial(double transIn)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DeleteExistingRawMaterial(double transIn)
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
 
 }

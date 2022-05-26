@@ -14,5 +14,15 @@ namespace FoodSync.DAL.Entites
         public virtual ICollection<Branch> Branches { get; set; }
         public virtual ICollection<Product> Products { get; set; }
 
+        public void AddNewBrand(double transIn)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void EditBrandInfo(double transIn)
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
 }

@@ -12,6 +12,20 @@ namespace FoodSync.DAL.Entites
         public virtual RawMaterial RawMaterial { get; set; }
         public double OpenningQty { get; set; }
         public double ClosingQty { get; set; }
+
+        public void AddOpeningQty(double transIn)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void AddClosingQty(double transIn)
+        {
+            throw new System.NotImplementedException();
+        }
+        public void SubmitOpeningClosing(double transIn)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     public enum Months

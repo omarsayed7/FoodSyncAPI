@@ -12,5 +12,24 @@ namespace FoodSync.DAL.Entites
         public virtual ICollection<RawMaterial> RawMaterials { get; set; }
         public virtual ICollection<Sale> Sales { get; set; }
 
+
+        public void AddNewProduct(double transIn)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DeleteExistingProduct(double transIn)
+        {
+            throw new System.NotImplementedException();
+        }
+        public void AddProductRawMaterials(double transIn)
+        {
+            throw new System.NotImplementedException();
+        }
+        public void EditProductInfo(double transIn)
+        {
+            throw new System.NotImplementedException();
+        }
+       
     }
 }

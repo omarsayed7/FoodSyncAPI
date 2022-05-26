@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodSync.API", "FoodSync.API\FoodSync.API.csproj", "{D8AF1CBA-EF9D-48C6-A565-456B5EAD9EFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodSync.BLL", "FoodSync.BLL\FoodSync.BLL.csproj", "{E5CA24DA-17A2-4D69-A1E7-EBD075B27631}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodSync.BLL", "FoodSync.BLL\FoodSync.BLL.csproj", "{E5CA24DA-17A2-4D69-A1E7-EBD075B27631}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodSync.Utilities", "FoodSync.Utilities\FoodSync.Utilities.csproj", "{E7CF08F5-743C-47AC-8311-0513E0E4A0F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodSync.Utilities", "FoodSync.Utilities\FoodSync.Utilities.csproj", "{E7CF08F5-743C-47AC-8311-0513E0E4A0F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodSync.DAL", "FoodSync.DAL\FoodSync.DAL.csproj", "{BEC2D4CE-D3B6-4875-A84B-9DAE49D89260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodSync.DAL", "FoodSync.DAL\FoodSync.DAL.csproj", "{BEC2D4CE-D3B6-4875-A84B-9DAE49D89260}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
