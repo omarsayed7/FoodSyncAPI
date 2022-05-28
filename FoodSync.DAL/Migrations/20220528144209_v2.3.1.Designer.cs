@@ -4,14 +4,16 @@ using FoodSync.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FoodSync.DAL.Migrations
 {
     [DbContext(typeof(FoodSyncDbContext))]
-    partial class FoodSyncDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220528144209_v2.3.1")]
+    partial class v231
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,22 +223,22 @@ namespace FoodSync.DAL.Migrations
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.Property<long>("ProductId")
+                    b.Property<long>("ProductsId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("Quantity")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("SaleId")
+                    b.Property<long>("SalesId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductsId");
 
-                    b.HasIndex("SaleId");
+                    b.HasIndex("SalesId");
 
-                    b.ToTable("ProductSales");
+                    b.ToTable("ProductSale");
                 });
 
             modelBuilder.Entity("FoodSync.DAL.Entites.RawMaterial", b =>
@@ -397,13 +399,13 @@ namespace FoodSync.DAL.Migrations
                 {
                     b.HasOne("FoodSync.DAL.Entites.Product", "Product")
                         .WithMany("ProductSales")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FoodSync.DAL.Entites.Sale", "Sale")
                         .WithMany("ProductSales")
-                        .HasForeignKey("SaleId")
+                        .HasForeignKey("SalesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

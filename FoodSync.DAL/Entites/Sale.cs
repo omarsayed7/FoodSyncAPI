@@ -7,8 +7,8 @@ namespace FoodSync.DAL.Entites
     public class Sale
     {
         public long Id { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<ProductSale> ProductSales { get; set; }
         public virtual Branch Branch { get; set; }
-        public long SaleQty { get; set; }
+        public DateTime SaleDate { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using FoodSync.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FoodSync.DAL.Migrations
 {
     [DbContext(typeof(FoodSyncDbContext))]
-    partial class FoodSyncDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220528144001_v2.3")]
+    partial class v23
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -236,7 +238,7 @@ namespace FoodSync.DAL.Migrations
 
                     b.HasIndex("SaleId");
 
-                    b.ToTable("ProductSales");
+                    b.ToTable("ProductSale");
                 });
 
             modelBuilder.Entity("FoodSync.DAL.Entites.RawMaterial", b =>

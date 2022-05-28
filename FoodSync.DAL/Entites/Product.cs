@@ -10,7 +10,7 @@ namespace FoodSync.DAL.Entites
         public string Name { get; set; }
         public virtual Brand Brand { get; set; }
         public virtual ICollection<ProductRawMaterial> ProductRawMaterials { get; set; }
-        public virtual ICollection<Sale> Sales { get; set; }
+        public virtual ICollection<ProductSale> ProductSales { get; set; }
 
     }
 }

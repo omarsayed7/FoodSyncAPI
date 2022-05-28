@@ -4,14 +4,16 @@ using FoodSync.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FoodSync.DAL.Migrations
 {
     [DbContext(typeof(FoodSyncDbContext))]
-    partial class FoodSyncDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220528152446_v2.3.4")]
+    partial class v234
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
