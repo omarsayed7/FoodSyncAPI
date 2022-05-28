@@ -20,7 +20,7 @@ namespace FoodSync.BLL.Concrete
                 var products = _context.Products.Where(x => x.Brand.Id == brandId).Select(s => new ProductDTO()
                 {
                     Name = s.Name,
-                    ProductId = s.Id,
+                    Id = s.Id,
                 }).ToList();
                 if (products == null)
                     return null;

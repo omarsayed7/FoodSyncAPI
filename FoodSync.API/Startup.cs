@@ -35,6 +35,7 @@ namespace FoodSync.API
             services.AddScoped<IProduct, ProductBusiness>();
             services.AddScoped<IRawMaterial, RawMaterialBusiness>();
             services.AddScoped<IUser, UserBusiness>();
+            services.AddScoped<ISales, SalesBusiness>();
 
 
             #region DB Connection

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FoodSync.BLL.DTOs
+namespace FoodSync.BLL.Models
 {
-    public class ProductDTO
+    public class ProductModel
     {
         public long Id { get; set; }
         public string Name { get; set; }

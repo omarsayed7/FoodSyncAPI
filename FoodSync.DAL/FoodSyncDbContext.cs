@@ -38,6 +38,7 @@ namespace FoodSync.DAL
         public virtual DbSet<RawMaterial> RawMaterials { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<ProductSale> ProductSales { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -50,6 +51,16 @@ namespace FoodSync.DAL
                 .HasMany<ProductRawMaterial>(s => s.ProductRawMaterials)
                 .WithOne(c => c.Product)
                 .HasForeignKey(x => x.ProductId);
+
+            modelBuilder.Entity<Product>()
+               .HasMany<ProductSale>(s => s.ProductSales)
+               .WithOne(c => c.Product)
+               .HasForeignKey(x => x.ProductId);
+
+            modelBuilder.Entity<Sale>()
+                .HasMany<ProductSale>(s => s.ProductSales)
+                .WithOne(c => c.Sale)
+                .HasForeignKey(x => x.SaleId);
         }
     }
 }

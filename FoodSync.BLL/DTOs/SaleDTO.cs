@@ -4,10 +4,10 @@ using System.Text;
 
 namespace FoodSync.BLL.DTOs
 {
-    public class ProductDTO
+    public class SaleDTO
     {
+        public List<ProductDTO> products { get; set; }
         public long Id { get; set; }
-        public string Name { get; set; }
-        public long Qty { get; set; }
+        public DateTime SaleTime { get; set; }
     }
 }

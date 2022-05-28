@@ -4,10 +4,9 @@ using System.Text;
 
 namespace FoodSync.BLL.Models
 {
-    public class SaleModel
+    public class GetSaleModel
     {
+        public DateTime SalesDate { get; set; }
         public long BranchId { get; set; }
-        public List<ProductModel> products { get; set; }
-        public DateTime SaleDate { get; set; }
     }
 }
