@@ -1,3 +1,5 @@
+using FoodSync.BLL.Abstract;
+using FoodSync.BLL.Concrete;
 using FoodSync.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +31,10 @@ namespace FoodSync.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddScoped<IProduct, ProductBusiness>();
+            services.AddScoped<IRawMaterial, RawMaterialBusiness>();
+
 
             #region DB Connection
             services.AddDbContext<FoodSyncDbContext>(options =>
