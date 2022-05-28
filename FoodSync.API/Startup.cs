@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,27 @@ namespace FoodSync.API
 
             }, ServiceLifetime.Singleton);
             #endregion
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Food Sync Api",
+                    Version = "v1",
+                    Description = "Food sync for cost analysis",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Omar Sayed & Ahmed Yousri",
+                        Email = string.Empty,
+                        Url = new Uri("https://coderjony.com/"),
+                    },
+                });
+            });
+            services.AddCors(options =>
+            {
+
+                options.AddPolicy("*", builder => builder.WithOrigins("*").AllowAnyHeader().AllowAnyMethod());
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +79,18 @@ namespace FoodSync.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Food Sync Api");
+
+                // To serve SwaggerUI at application's root page, set the RoutePrefix property to an empty string.
+                c.RoutePrefix = string.Empty;
             });
         }
     }

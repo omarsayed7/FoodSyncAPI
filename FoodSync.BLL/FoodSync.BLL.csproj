@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FoodSync.DAL\FoodSync.DAL.csproj" />
     <ProjectReference Include="..\FoodSync.Utilities\FoodSync.Utilities.csproj" />
   </ItemGroup>
