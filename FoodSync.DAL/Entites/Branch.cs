@@ -15,19 +15,5 @@ namespace FoodSync.DAL.Entites
         public virtual ICollection<Consumption> Consumptions { get; set; }
         public string BranchCode { get; set; }
 
-        public void AddNewBranch(double transIn)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void EditExistingBranch(double transIn)
-        {
-            throw new System.NotImplementedException();
-        }
-        public void DeleteBranch(double transIn)
-        {
-            throw new System.NotImplementedException();
-        }
-       
     }
 }

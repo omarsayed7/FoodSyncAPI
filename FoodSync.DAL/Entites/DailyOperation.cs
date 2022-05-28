@@ -19,23 +19,5 @@ namespace FoodSync.DAL.Entites
         {
             throw new System.NotImplementedException();
         }
-
-        public void AddTransOut(double transIn)
-        {
-            throw new System.NotImplementedException();
-        }
-        public void AddWaste(double transIn)
-        {
-            throw new System.NotImplementedException();
-        }
-        public void AddFactoryReciving(double transIn)
-        {
-            throw new System.NotImplementedException();
-        }
-        public void Submit(double transIn)
-        {
-            throw new System.NotImplementedException();
-        }
-
     }
 }

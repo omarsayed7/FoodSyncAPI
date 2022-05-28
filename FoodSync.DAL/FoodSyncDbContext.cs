@@ -42,8 +42,14 @@ namespace FoodSync.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<RawMaterial>()
-                .HasMany<Product>(s => s.Products)
-                .WithMany(c => c.RawMaterials);
+                .HasMany<ProductRawMaterial>(s => s.productRawMaterials)
+                .WithOne(c => c.RawMaterial)
+                .HasForeignKey(x => x.RawMaterialId);
+
+            modelBuilder.Entity<Product>()
+                .HasMany<ProductRawMaterial>(s => s.ProductRawMaterials)
+                .WithOne(c => c.Product)
+                .HasForeignKey(x => x.ProductId);
         }
     }
 }

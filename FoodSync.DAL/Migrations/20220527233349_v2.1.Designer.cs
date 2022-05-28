@@ -4,14 +4,16 @@ using FoodSync.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FoodSync.DAL.Migrations
 {
     [DbContext(typeof(FoodSyncDbContext))]
-    partial class FoodSyncDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220527233349_v2.1")]
+    partial class v21
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -189,31 +191,6 @@ namespace FoodSync.DAL.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("FoodSync.DAL.Entites.ProductRawMaterial", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<long>("ProductId")
-                        .HasColumnType("bigint");
-
-                    b.Property<float>("Quantity")
-                        .HasColumnType("real");
-
-                    b.Property<long>("RawMaterialId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("RawMaterialId");
-
-                    b.ToTable("ProductRawMaterial");
-                });
-
             modelBuilder.Entity("FoodSync.DAL.Entites.RawMaterial", b =>
                 {
                     b.Property<long>("id")
@@ -277,6 +254,21 @@ namespace FoodSync.DAL.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ProductRawMaterial", b =>
+                {
+                    b.Property<long>("ProductsId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("RawMaterialsid")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("ProductsId", "RawMaterialsid");
+
+                    b.HasIndex("RawMaterialsid");
+
+                    b.ToTable("ProductRawMaterial");
                 });
 
             modelBuilder.Entity("ProductSale", b =>
@@ -364,25 +356,6 @@ namespace FoodSync.DAL.Migrations
                     b.Navigation("Brand");
                 });
 
-            modelBuilder.Entity("FoodSync.DAL.Entites.ProductRawMaterial", b =>
-                {
-                    b.HasOne("FoodSync.DAL.Entites.Product", "Product")
-                        .WithMany("ProductRawMaterials")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FoodSync.DAL.Entites.RawMaterial", "RawMaterial")
-                        .WithMany("productRawMaterials")
-                        .HasForeignKey("RawMaterialId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("RawMaterial");
-                });
-
             modelBuilder.Entity("FoodSync.DAL.Entites.Sale", b =>
                 {
                     b.HasOne("FoodSync.DAL.Entites.Branch", "Branch")
@@ -401,6 +374,21 @@ namespace FoodSync.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Branch");
+                });
+
+            modelBuilder.Entity("ProductRawMaterial", b =>
+                {
+                    b.HasOne("FoodSync.DAL.Entites.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodSync.DAL.Entites.RawMaterial", null)
+                        .WithMany()
+                        .HasForeignKey("RawMaterialsid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ProductSale", b =>
@@ -438,18 +426,11 @@ namespace FoodSync.DAL.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("FoodSync.DAL.Entites.Product", b =>
-                {
-                    b.Navigation("ProductRawMaterials");
-                });
-
             modelBuilder.Entity("FoodSync.DAL.Entites.RawMaterial", b =>
                 {
                     b.Navigation("DailyOperations");
 
                     b.Navigation("OpenningClosingQties");
-
-                    b.Navigation("productRawMaterials");
                 });
 #pragma warning restore 612, 618
         }

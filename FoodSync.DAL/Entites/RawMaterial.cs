@@ -9,21 +9,10 @@ namespace FoodSync.DAL.Entites
         public long id { get; set; }
         public string Name { get; set; }
         public string Unit { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<ProductRawMaterial> productRawMaterials { get; set; }
         public virtual ICollection<Brand> Brands { get; set; }
         public virtual ICollection<OpenningClosingQty> OpenningClosingQties { get; set; }
         public virtual ICollection<DailyOperation> DailyOperations { get; set; }
-
-        public void AddRawMaterial(double transIn)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void DeleteExistingRawMaterial(double transIn)
-        {
-            throw new System.NotImplementedException();
-        }
-
-    }
+               }
 
 }
