@@ -37,6 +37,8 @@ namespace FoodSync.API
             services.AddScoped<IUser, UserBusiness>();
             services.AddScoped<ISales, SalesBusiness>();
             services.AddScoped<IDailyOperations, DailyOperations>();
+            services.AddScoped<IOpenningClosing, OpenningClosingBusiness>();
+
 
             #region DB Connection
             services.AddDbContext<FoodSyncDbContext>(options =>
