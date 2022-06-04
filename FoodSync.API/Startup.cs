@@ -38,6 +38,7 @@ namespace FoodSync.API
             services.AddScoped<ISales, SalesBusiness>();
             services.AddScoped<IDailyOperations, DailyOperations>();
             services.AddScoped<IOpenningClosing, OpenningClosingBusiness>();
+            services.AddScoped<IConsumbtion, ConsumbtionsBusiness>();
 
 
             #region DB Connection
