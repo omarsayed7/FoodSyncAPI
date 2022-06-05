@@ -19,8 +19,16 @@ namespace FoodSync.BLL.DTOs
         public double OpeningQuantity { get; set; }
 
         public double ClosingQuantity { get; set; }
+        public double SaleQuantity { get; set; }
 
 
 
+    }
+
+    public class RawMaterialConsumbtionDto
+    {
+        public double RawMaterialId { get; set; }
+        public string RawMaterialName { get; set; }
+        public double FinalConsumbtion { get; set; }
     }
 }

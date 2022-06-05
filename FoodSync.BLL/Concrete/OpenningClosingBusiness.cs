@@ -55,7 +55,7 @@ namespace FoodSync.BLL.Concrete
             {
                 return false;
             }
-            _context.SaveChanges();
+            
         }
         public List<OpenningClosingDTO> GetOpenningClosing(OpenningClosingModel openCloseModel)
         {

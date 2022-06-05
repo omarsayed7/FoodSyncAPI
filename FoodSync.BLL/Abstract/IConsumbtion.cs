@@ -7,6 +7,6 @@ namespace FoodSync.BLL.Abstract
 {
     public interface IConsumbtion
     {
-        List<ConsumbtionDTO> CalculateConsumbtion(string month, long branchId);
+        List<RawMaterialConsumbtionDto> CalculateConsumbtion(string month, long branchId);
     }
 }
