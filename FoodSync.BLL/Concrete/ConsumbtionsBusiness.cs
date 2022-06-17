@@ -40,7 +40,8 @@ namespace FoodSync.BLL.Concrete
                                   FactoryRecieving = s.FactoryRecivingQty,
                                   Month = month,
                                   OpeningQuantity = e.OpenningQty,
-                                  ClosingQuantity = e.ClosingQty
+                                  ClosingQuantity = e.ClosingQty,
+                                  RawMaterialUnit = sa.Unit,
                               }).ToList();
             foreach (var quantity in quantities)
             {
@@ -64,10 +65,15 @@ namespace FoodSync.BLL.Concrete
                 var consumbtionQty = (consumbtion.FactoryRecieving + consumbtion.TransferIn + consumbtion.OpeningQuantity) - (consumbtion.SaleQuantity + consumbtion.TransferOut + consumbtion.Waste);
                 rawMaterialConsumbtions.Add(new RawMaterialConsumbtionDto()
                 {
-                    RawMaterialId = consumbtion.RawMaterialId,
-                    RawMaterialName = consumbtion.RawMaterialName,
-                    FinalConsumbtion = consumbtion.ClosingQuantity - consumbtionQty
-                });
+                    Id = consumbtions.IndexOf(consumbtion)+1,
+                    RawMaterial = new RawMaterialDTO()
+                    {
+                        Id = consumbtion.RawMaterialId,
+                        Name = consumbtion.RawMaterialName,
+                        Unit = consumbtion.RawMaterialUnit,
+                    },
+                    Consumption = consumbtion.ClosingQuantity - consumbtionQty
+                }); ;
             }
             return rawMaterialConsumbtions;
         }

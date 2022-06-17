@@ -9,6 +9,8 @@ namespace FoodSync.BLL.DTOs
         public long Id { get; set; }
         public RawMaterialDTO RawMaterial { get; set; }
         public double Qty { get; set; }
+        public string Date { get; set; }
+
     }
     public enum Months
     {

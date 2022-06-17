@@ -8,6 +8,7 @@ namespace FoodSync.BLL.DTOs
     {
         public long RawMaterialId { get; set; }
         public string RawMaterialName { get; set; }
+        public string RawMaterialUnit { get; set; }
         public string Month { get; set; }
         public double TransferIn { get; set; }
         public double TransferOut { get; set; }
@@ -27,8 +28,9 @@ namespace FoodSync.BLL.DTOs
 
     public class RawMaterialConsumbtionDto
     {
-        public double RawMaterialId { get; set; }
-        public string RawMaterialName { get; set; }
-        public double FinalConsumbtion { get; set; }
+        public double Id { get; set; }
+
+        public RawMaterialDTO RawMaterial { get; set; }
+        public double Consumption { get; set; }
     }
 }

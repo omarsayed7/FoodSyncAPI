@@ -1,4 +1,5 @@
 ﻿using FoodSync.BLL.Abstract;
+using FoodSync.BLL.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -18,11 +19,11 @@ using System.Threading.Tasks;
             _business = consumbtion;
         }
         [HttpPost("CalculateConsumbtion")]
-        public ActionResult CalculateConsummbtion(string month, long branchId)
+        public ActionResult CalculateConsummbtion(ConsumbtionModel consumbtionModel)
         {
             try
             {
-                var res = _business.CalculateConsumbtion(month, branchId);
+                var res = _business.CalculateConsumbtion(consumbtionModel.Month, consumbtionModel.BranchId);
                 if (res.Count == 0)
                     return NotFound();
             return Ok(res);

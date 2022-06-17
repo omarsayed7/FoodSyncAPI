@@ -10,7 +10,7 @@ using System.Text;
 
 namespace FoodSync.BLL.Concrete
 {
-    public class OpenningClosingBusiness: IOpenningClosing
+    public class OpenningClosingBusiness : IOpenningClosing
     {
         private readonly FoodSyncDbContext _context;
         public OpenningClosingBusiness(FoodSyncDbContext foodSyncDb)
@@ -33,7 +33,7 @@ namespace FoodSync.BLL.Concrete
                             Branch = branch,
                             RawMaterial = rawMaterial,
                             Months = (DAL.Entites.Months)Enum.Parse(typeof(DAL.Entites.Months), openClosModel.Month)
-                });
+                        });
                         break;
                     case "ClosingQty":
                         _context.OpenningClosingQties.Add(new OpenningClosingQty()
@@ -55,7 +55,7 @@ namespace FoodSync.BLL.Concrete
             {
                 return false;
             }
-            
+
         }
         public List<OpenningClosingDTO> GetOpenningClosing(OpenningClosingModel openCloseModel)
         {
@@ -68,16 +68,18 @@ namespace FoodSync.BLL.Concrete
                 {
                     case "OpenningQty":
                         openningClosingList = _context.OpenningClosingQties.Where(x => x.Branch == branch && x.Months == selectedMonth && x.OpenningQty != 0).Select(s => new OpenningClosingDTO()
+                        {
+                            Id = s.Id,
+                            RawMaterial = new RawMaterialDTO()
                             {
-                                Id = s.Id,
-                                RawMaterial = new RawMaterialDTO()
-                                {
-                                    Id = s.RawMaterial.id,
-                                    Name = s.RawMaterial.Name,
-                                    Unit = s.RawMaterial.Unit
-                                },
-                                Qty = s.OpenningQty
-                            }).ToList();
+                                Id = s.RawMaterial.id,
+                                Name = s.RawMaterial.Name,
+                                Unit = s.RawMaterial.Unit
+                            },
+                            Qty = s.OpenningQty,
+                            Date = selectedMonth.ToString()
+
+                        }).ToList();
                         break;
                     case "ClosingQty":
                         openningClosingList = _context.OpenningClosingQties.Where(x => x.Branch == branch && x.Months == selectedMonth && x.ClosingQty != 0).Select(s => new OpenningClosingDTO()
@@ -89,7 +91,8 @@ namespace FoodSync.BLL.Concrete
                                 Name = s.RawMaterial.Name,
                                 Unit = s.RawMaterial.Unit
                             },
-                            Qty = s.ClosingQty
+                            Qty = s.ClosingQty,
+                            Date = selectedMonth.ToString()
                         }).ToList();
                         break;
                     default:
